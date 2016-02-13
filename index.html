@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>VisionZero</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+      <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+       <script type="text/javascript" src="http://omnipotent.net/jquery.sparkline/2.1.2/jquery.sparkline.min.js"></script> 
+    
+    
+    
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['sankey']});
+      google.charts.setOnLoadCallback(drawChart);
+
+function drawChart() {
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'From');
+    data.addColumn('string', 'To');
+    data.addColumn('number', 'Crashes');
+    data.addRows([
+['Ward 1','AM_norush',2257],
+['Ward 1','AM_rush',1693],
+['Ward 1','Evening',1702],
+['Ward 1','Overnight',2069],
+['Ward 1','PM_norush',2116],
+['Ward 2','AM_norush',6058],
+['Ward 2','AM_rush',4649],
+['Ward 2','Evening',4570],
+['Ward 2','Overnight',4856],
+['Ward 2','PM_norush',5452],
+['Ward 3','AM_norush',1877],
+['Ward 3','AM_rush',1481],
+['Ward 3','Evening',1344],
+['Ward 3','Overnight',819],
+['Ward 3','PM_norush',1830],
+['Ward 4','AM_norush',2164],
+['Ward 4','AM_rush',1729],
+['Ward 4','Evening',1630],
+['Ward 4','Overnight',1666],
+['Ward 4','PM_norush',2023],
+['Ward 5','AM_norush',3706],
+['Ward 5','AM_rush',3201],
+['Ward 5','Evening',2725],
+['Ward 5','Overnight',2780],
+['Ward 5','PM_norush',3744],
+['Ward 6','AM_norush',3874],
+['Ward 6','AM_rush',3304],
+['Ward 6','Evening',2834],
+['Ward 6','Overnight',2740],
+['Ward 6','PM_norush',3788],
+['Ward 7','AM_norush',2676],
+['Ward 7','AM_rush',2148],
+['Ward 7','Evening',2536],
+['Ward 7','Overnight',2351],
+['Ward 7','PM_norush',2487],
+['Ward 8','AM_norush',2330],
+['Ward 8','AM_rush',1958],
+['Ward 8','Evening',1665],
+['Ward 8','Overnight',1674],
+['Ward 8','PM_norush',2266],
+
+       ['AM_norush','Clear',20451],
+['AM_norush','Fog/Mist',157],
+['AM_norush','Rain',2404],
+['AM_norush','Severe Crosswind',67],
+['AM_norush','Snow',400],
+['AM_norush','others',1496],
+['AM_rush','Clear',16006],
+['AM_rush','Fog/Mist',289],
+['AM_rush','Rain',2032],
+['AM_rush','Severe Crosswind',58],
+['AM_rush','Snow',395],
+['AM_rush','others',1409],
+['Evening','Clear',14753],
+['Evening','Fog/Mist',183],
+['Evening','Rain',2336],
+['Evening','Severe Crosswind',52],
+['Evening','Snow',264],
+['Evening','others',1449],
+['Overnight','Clear',15031],
+['Overnight','Fog/Mist',254],
+['Overnight','Rain',1960],
+['Overnight','Severe Crosswind',52],
+['Overnight','Snow',301],
+['Overnight','others',1375],
+['PM_norush','Clear',19807],
+['PM_norush','Fog/Mist',130],
+['PM_norush','Rain',2029],
+['PM_norush','Severe Crosswind',91],
+['PM_norush','Snow',337],
+['PM_norush','others',1340],
+        
+['Clear','Fatality',109],
+['Clear','Injury',20135],
+['Clear','Prop. Damage',35953],
+['Clear','Unknown',29851],
+['Fog/Mist','Fatality',2],
+['Fog/Mist','Injury',222],
+['Fog/Mist','Prop. Damage',450],
+['Fog/Mist','Unknown',339],
+['Rain','Fatality',8],
+['Rain','Injury',2588],
+['Rain','Prop. Damage',4641],
+['Rain','Unknown',3524],
+['Severe Crosswind','Fatality',1],
+['Severe Crosswind','Injury',67],
+['Severe Crosswind','Prop. Damage',145],
+['Severe Crosswind','Unknown',107],
+['Snow','Fatality',2],
+['Snow','Injury',297],
+['Snow','Prop. Damage',710],
+['Snow','Unknown',688],
+['others','Fatality',6],
+['others','Injury',1089],
+['others','Prop. Damage',2523],
+['others','Unknown',3451],
+        
+
+
+    ]);
+
+        var colors = ['#a6cee3', '#b2df8a'];
+    
+        // Sets chart options.
+        var options = {
+          sankey: { node: { nodePadding:50 } },
+          sankey: {
+            node: {
+              colors: colors
+            },
+            link: {
+              colorMode: 'gradient',
+              colors: colors
+            }
+          }
+        };
+
+        // Instantiates and draws our chart, passing in some options.
+        var chart = new google.visualization.Sankey(document.getElementById('sankey_basic'));
+        chart.draw(data, options);
+      }
+    </script>
+    
+   <script type="text/javascript">
+    /* <![CDATA[ */
+    $(function() {
+        /** This code runs when everything has been loaded on the page */
+        /* Inline sparklines take their values from the contents of the tag */
+        $('.inlinesparkline').sparkline(); 
+
+        /* Sparklines can also take their values from the first argument passed to the sparkline() function */
+        var myvalues = [10,8,5,7,4,4,1];
+        $('.dynamicsparkline').sparkline(myvalues);
+
+        /* The second argument gives options such as specifying you want a bar chart */
+        $('.dynamicbar').sparkline(myvalues, {type: 'bar', barColor: 'green'} );
+
+        /* Use 'html' instead of an array of values to pass options to a sparkline with data in the tag */
+        $('.inlinebar').sparkline('html', {type: 'bar', barColor: 'red'} );
+
+    });
+    /* ]]> */
+    </script>
+    
+</head>
+<body>
+  <nav>
+    <div class="nav-wrapper blue darken-4">
+      <a href="#" class="brand-logo center">Vision Zero Executive Summary</a>
+    </div>
+  </nav>
+    
+<div class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col m4">
+                <div class="card">
+                  <div class="card-content">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sapien lorem, molestie ut odio vitae, maximus dapibus tortor. Integer lacinia viverra augue sit amet tristique. Aliquam imperdiet nunc nec urna volutpat, ac commodo nisi dictum. Nulla lobortis tincidunt odio sit amet semper. Nulla lobortis tincidunt odio sit amet semper &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                  </div>
+                </div>
+            </div>
+            <div class="col m8">
+                <div class="card">
+                     <div class="">
+                           <ul class="collection">
+        <li class="collection-item"><div>Total Speeding Tickets: 14.2K<a href="#!" class="secondary-content"><span class="inlinesparkline">4703,5548,9094,9388,8532,7339,5563,5095,7303,5678,7317,8616,10851,12812,12707,11042,14698,13450,8421,10590,14757,16728,16291,14307,11141,13846,18780,19551,15348,14961,16920,20155,16157,13672,15147,14255,16566,15135,17615,18837,33721,37706,31371,29956,16993,14731,15681,20035,12500,11426,14639,14219</span></a></div></li>
+        <li class="collection-item"><div>Unsafe Driving: 1.2K<a href="#!" class="secondary-content"><span class="inlinesparkline">1143,1269,2404,2265,2080,2218,2269,1540,2596,1826,2122,2021,1797,1803,2107,2029,2438,2595,2318,2273,2147,2079,1911,1830,1720,1714,2256,852,654,890,1012,1195,2189,2129,2862,2264,2279,2648,2504,3544,5514,5536,5478,5093,2772,2418,2761,2196,2224,2504,2477,1200</span></a></div></li>
+        <li class="collection-item"><div>Total Fines: $2.0M<a href="#!" class="secondary-content"><span class="inlinesparkline">726780,738775,1186078,1190443,1172730,1145106,958029,821925,1189285,908031,1162608,1312632,1575539,1972355,1873759,1681570,2188235,2121795,1489955,1592352,2196250,2574048,2437615,2159282,1717839,1971126,2640165,2481485,1923509,2014015,2285555,2771425,2376460,1952930,2196736,2131405,2464714,2333390,2624330,2706175,4906347,5430985,4805475,4390590,2487577,2147690,2352093,2808025,1808865,1769265,2120505,1952455</span></a></div></li>
+        <li class="collection-item"><div>Fines Paid: $46.4K<a href="#!" class="secondary-content"><span class="inlinesparkline">636421,643572,1045583,1049671,1025947,988832,818425.52,718417,1007716,755446,947289,1095372,1346490,1688952,1584385,1396473,1823306,1689590,1148593.56,1205362,1683690,1940430.75,1838925,1639550,1267216,1516761,2019495,1892280,1473090,1481406,1722254,1996661,1731702,1405929,1548575,1472871,1655752,1525344,1649175,1709025,2914572,2895532,2230285,1770725,1408594,1363217,1319055,1324321,526265,307400,195145,46430</span></a></div></li>
+        <li class="collection-item"><div>Percentage Fines Paid: 2.4%<a href="#!" class="secondary-content"><span class="inlinesparkline">0.875672143,0.871133972,0.881546576,0.881748223,0.874836493,0.863528791,0.854280528,0.874066369,0.847329278,0.831960583,0.814796561,0.834485217,0.854621815,0.856312378,0.845564985,0.830457846,0.833231349,0.796302188,0.770891443,0.756969565,0.766620376,0.753844043,0.754395177,0.759303324,0.737680306,0.769489622,0.76491242,0.762559516,0.765834732,0.735548643,0.753538637,0.720445619,0.728689732,0.719907524,0.704943607,0.69103291,0.671782608,0.653702981,0.628417539,0.631527895,0.594041147,0.533150432,0.464113329,0.403300012,0.566251417,0.634736391,0.56080053,0.471620089,0.290936582,0.173744465,0.092027607,0.023780318</span></a></div></li>
+      </ul>
+                      
+                     </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+ </div> 
+<div class="section">
+    <div class="container">
+        <div id="sankey_basic" style="width: 900px; height: 300px;"></div>
+    </div>
+ </div>   
+    
+
+
+
+  <!--  Scripts-->
+
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+
+  </body>
+</html>
